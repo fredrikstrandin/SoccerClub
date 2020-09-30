@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GraphQL.Server;
+using GraphQL.Server.Ui.Playground;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SoccerClub.GraphQL.GraphQLOperation;
 
 namespace SoccerClub.GraphQL
 {
@@ -27,6 +30,16 @@ namespace SoccerClub.GraphQL
         {
             services.AddHealthChecks();
             services.AddControllers();
+
+            services.AddScoped<SoccerClubSchema>();
+
+            services.AddGraphQL(options =>
+            {
+                options.EnableMetrics = false;
+                options.ExposeExceptions = true;
+            })
+                .AddSystemTextJson()
+                .AddGraphTypes(ServiceLifetime.Scoped);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,11 +56,15 @@ namespace SoccerClub.GraphQL
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapHealthChecks("/healthcheck");
-                endpoints.MapControllers();
-            });
+
+            app.UseGraphQL<SoccerClubSchema>();
+            app.UseGraphQLPlayground(new GraphQLPlaygroundOptions());
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapHealthChecks("/healthcheck");
+            //    endpoints.MapControllers();
+            //});
         }
     }
 }
