@@ -16,14 +16,14 @@ namespace SoccerClub.GraphQL.Services
             _userRepository = userRepository;
         }
 
-        public Task<List<UserItem>> Get()
+        public Task<List<UserItem>> GetAsync()
         {
-            return _userRepository.Get();
+            return _userRepository.GetAsync();
         }
 
-        public Task<UserItem> Get(string id)
+        public Task<UserItem> GetAsync(string id)
         {
-            return _userRepository.Get(id);
+            return _userRepository.GetAsync(id);
         }
     }
 }

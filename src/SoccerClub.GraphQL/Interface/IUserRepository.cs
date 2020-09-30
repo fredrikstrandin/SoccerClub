@@ -6,7 +6,7 @@ namespace SoccerClub.GraphQL.Interface
 {
     public interface IUserRepository
     {
-        Task<List<UserItem>> Get();
-        Task<UserItem> Get(string id);
+        Task<List<UserItem>> GetAsync();
+        Task<UserItem> GetAsync(string id);
     }
 }

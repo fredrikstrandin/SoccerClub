@@ -26,8 +26,7 @@ namespace SoccerClub.GraphQL.GraphQLOperation.Type.User
             
             Field(t => t.Street, nullable: true).Name("street").Description("User street");
             Field(t => t.ZIP, nullable: true).Name("zip_code").Description("User ZIP code");
-            Field(t => t.City, nullable: true).Name("city").Description("User city");
-            Field(t => t.Country, nullable: true).Name("country").Description("User country");
+            Field(t => t.City, nullable: true).Name("city").Description("User city");            
         }
     }
 }

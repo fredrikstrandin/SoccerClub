@@ -35,7 +35,10 @@ namespace SoccerClub.GraphQL
             services.AddControllers();
 
             services.AddSingleton<IUserService, UserService>();
+            services.AddSingleton<ITeamService, TeamService>();
+
             services.AddSingleton<IUserRepository, UserInMemoryRepository>();
+            services.AddSingleton<ITeamRepository, TeamInMemoryRepository>();
 
             services.AddScoped<SoccerClubSchema>();
 
