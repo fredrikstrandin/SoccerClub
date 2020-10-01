@@ -15,6 +15,7 @@ using Microsoft.Extensions.Logging;
 using SoccerClub.GraphQL.GraphQLOperation;
 using SoccerClub.GraphQL.Interface;
 using SoccerClub.GraphQL.Repository;
+using SoccerClub.GraphQL.Repository.InMemory;
 using SoccerClub.GraphQL.Services;
 
 namespace SoccerClub.GraphQL
@@ -34,10 +35,11 @@ namespace SoccerClub.GraphQL
             services.AddHealthChecks();
             services.AddControllers();
 
-            services.AddSingleton<IUserService, UserService>();
+            services.AddSingleton<IMemberService, MemberService>();
             services.AddSingleton<ITeamService, TeamService>();
 
-            services.AddSingleton<IUserRepository, UserInMemoryRepository>();
+            services.AddSingleton<InMemoryData>();
+            services.AddSingleton<IMemberRepository, MemberInMemoryRepository>();
             services.AddSingleton<ITeamRepository, TeamInMemoryRepository>();
 
             services.AddScoped<SoccerClubSchema>();

@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace SoccerClub.GraphQL.Repository
 {
-    public class UserInMemoryRepository : IUserRepository
+    public class MemberInMemoryRepository : IMemberRepository
     {
-        private List<UserItem> _userList = new List<UserItem>() {
-                    new UserItem()
+        private List<MemberItem> _memberList = new List<MemberItem>() {
+                    new MemberItem()
                     {
                         Id = "1",
                         FirstName = "Maria",
@@ -21,7 +21,7 @@ namespace SoccerClub.GraphQL.Repository
                         City = "Stockholm",
                         Email = "maria.forsman@spam.com"
                     },
-                    new UserItem()
+                    new MemberItem()
                     {
                         Id = "2",
                         FirstName = "Erik",
@@ -34,14 +34,18 @@ namespace SoccerClub.GraphQL.Repository
                     }
                 };
 
-        public Task<List<UserItem>> GetAsync()
+        public MemberInMemoryRepository()
         {
-            return Task.FromResult(_userList);
         }
 
-        public Task<UserItem> GetAsync(string id)
+        public Task<List<MemberItem>> GetAsync()
         {
-            return Task.FromResult(_userList.Where(x => x.Id == id).FirstOrDefault());
+            return Task.FromResult(_memberList);
+        }
+
+        public Task<MemberItem> GetAsync(string id)
+        {
+            return Task.FromResult(_memberList.Where(x => x.Id == id).FirstOrDefault());
         }
     }
 }

@@ -1,16 +1,16 @@
 ﻿using GraphQL.Types;
-using SoccerClub.GraphQL.GraphQLOperation.Type.User;
+using SoccerClub.GraphQL.GraphQLOperation.Type.Member;
 using SoccerClub.GraphQL.Interface;
 
 namespace SoccerClub.GraphQL.GraphQLOperation
 {
-    public class NordicLightQuery : ObjectGraphType
+    public class SoccerClubQuery : ObjectGraphType
     {        
-        public NordicLightQuery(IUserService userService, ITeamService teamService)
+        public SoccerClubQuery(IMemberService memberService, ITeamService teamService)
         {
             Field<ListGraphType<TeamType>>(
                 "members",
-                resolve: context => userService.GetAsync()
+                resolve: context => memberService.GetAsync()
             );
 
             Field<ListGraphType<TeamType>>(

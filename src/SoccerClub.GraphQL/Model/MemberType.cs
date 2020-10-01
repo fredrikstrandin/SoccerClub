@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SoccerClub.GraphQL.Model
 {
-    public enum UserType
+    public enum MemberType
     {
         Player,
         Trainer,

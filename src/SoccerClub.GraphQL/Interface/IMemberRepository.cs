@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 namespace SoccerClub.GraphQL.Interface
 {
-    public interface IUserService
+    public interface IMemberRepository
     {
-        Task<List<UserItem>> GetAsync();
-        Task<UserItem> GetAsync(string id);
+        Task<List<MemberItem>> GetAsync();
+        Task<MemberItem> GetAsync(string id);
     }
 }

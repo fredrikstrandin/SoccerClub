@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SoccerClub.GraphQL.Model
 {
-    public class UserItem
+    public class MemberItem
     {
         public string Id { get; set; }
         public string FirstName { get; set; }

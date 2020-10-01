@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SoccerClub.GraphQL.GraphQLOperation.Type.User
+namespace SoccerClub.GraphQL.GraphQLOperation.Type.Member
 {
     public class TeamType : ObjectGraphType<TeamItem>
     {
@@ -14,15 +14,15 @@ namespace SoccerClub.GraphQL.GraphQLOperation.Type.User
         {
             Field(t => t.Id).Name("id").Description("Id for the team");
             Field(t => t.Name).Name("name").Description("Team name");
-            Field<ListGraphType<UserType>>(
+            Field<ListGraphType<MemberType>>(
                 "trainers",
                 "Trainer info",
-                resolve: context => teamService.GetUsersAsync(context.Source.Id, Model.UserType.Trainer)
+                resolve: context => teamService.GetMembersAsync(context.Source.Id, Model.MemberType.Trainer)
             );
-            Field< ListGraphType<UserType>>(
+            Field< ListGraphType<MemberType>>(
                 "players",
                 "Player info",
-                resolve: context => teamService.GetUsersAsync(context.Source.Id, Model.UserType.Player)
+                resolve: context => teamService.GetMembersAsync(context.Source.Id, Model.MemberType.Player)
             );
         }
     }

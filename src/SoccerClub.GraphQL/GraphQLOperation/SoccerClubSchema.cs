@@ -11,8 +11,9 @@ namespace SoccerClub.GraphQL.GraphQLOperation
     {
         public SoccerClubSchema(IServiceProvider serviceProvider) : base(serviceProvider)
         {
-            Query = serviceProvider.GetRequiredService<NordicLightQuery>();
-            
+            Query = serviceProvider.GetRequiredService<SoccerClubQuery>();
+            Mutation = serviceProvider.GetRequiredService<SoccerClubMutation>();
+
             Description = "The schema for the Soccer Club";
         }
     }
