@@ -1,5 +1,6 @@
 ﻿using SoccerClub.GraphQL.Interface;
 using SoccerClub.GraphQL.Model;
+using SoccerClub.GraphQL.Repository.InMemory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,43 +10,40 @@ namespace SoccerClub.GraphQL.Repository
 {
     public class MemberInMemoryRepository : IMemberRepository
     {
-        private List<MemberItem> _memberList = new List<MemberItem>() {
-                    new MemberItem()
-                    {
-                        Id = "1",
-                        FirstName = "Maria",
-                        LastName = "Forsman",
-                        Biography = "Like the game.",
-                        Street = "Hornsgatan 32",
-                        ZIP = "131 87",
-                        City = "Stockholm",
-                        Email = "maria.forsman@spam.com"
-                    },
-                    new MemberItem()
-                    {
-                        Id = "2",
-                        FirstName = "Erik",
-                        LastName = "Karlsson",
-                        Biography = "For me I like to see player to be better.",
-                        Street = "Hornsgatan 32",
-                        ZIP = "419 65",
-                        City = "Sandviken",
-                        Email = "erik.karlsson@spam.com"
-                    }
-                };
+        private readonly InMemoryData _data;
 
-        public MemberInMemoryRepository()
+        public MemberInMemoryRepository(InMemoryData data)
         {
+            _data = data;
+        }
+
+        public Task<MemberItem> CreateAsync(MemberInputItem item)
+        {
+            string id = _data.NextId;
+            _data.MemberList.Add(new MemberItem()
+            {
+                Id = id,
+                FirstName = item.FirstName,
+                LastName = item.LastName,
+                Email = item.Email,
+
+                Street = item.Street,
+                ZIP = item.ZIP,
+                City = item.City,
+            });
+            
+
+            return Task.FromResult(new MemberItem() { Id = id, FirstName = item.FirstName, LastName = item.LastName });
         }
 
         public Task<List<MemberItem>> GetAsync()
         {
-            return Task.FromResult(_memberList);
+            return Task.FromResult(_data.MemberList);
         }
 
         public Task<MemberItem> GetAsync(string id)
         {
-            return Task.FromResult(_memberList.Where(x => x.Id == id).FirstOrDefault());
+            return Task.FromResult(_data.MemberList.Where(x => x.Id == id).FirstOrDefault());
         }
     }
 }

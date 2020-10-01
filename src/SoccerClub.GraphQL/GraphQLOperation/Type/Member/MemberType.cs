@@ -1,4 +1,5 @@
-﻿using GraphQL.Types;
+﻿using GraphQL;
+using GraphQL.Types;
 using SoccerClub.GraphQL.Model;
 using System;
 using System.Collections.Generic;
@@ -17,16 +18,19 @@ namespace SoccerClub.GraphQL.GraphQLOperation.Type.Member
             Field<StringGraphType>(
                 "full_name",
                 "Member full name",
-                resolve: context => $"{context.Source.FirstName} {context.Source.LastName}"
+                resolve: context =>
+                {
+                    context.Errors.Add(new ExecutionError("Member allredy exist"));
+
+                    return $"{context.Source.FirstName} {context.Source.LastName}";
+                }
             );
 
-            Field(t => t.Biography, nullable: true).Name("about").Description("description of the member");
-
             Field(t => t.Email, nullable: true).Name("email").Description("Member email");
-            
+
             Field(t => t.Street, nullable: true).Name("street").Description("Member street");
             Field(t => t.ZIP, nullable: true).Name("zip_code").Description("Member ZIP code");
-            Field(t => t.City, nullable: true).Name("city").Description("Member city");            
+            Field(t => t.City, nullable: true).Name("city").Description("Member city");
         }
     }
 }

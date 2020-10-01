@@ -8,5 +8,6 @@ namespace SoccerClub.GraphQL.Interface
     {
         Task<List<MemberItem>> GetAsync();
         Task<MemberItem> GetAsync(string id);
+        Task<MemberItem> CreateAsync(MemberInputItem item);
     }
 }

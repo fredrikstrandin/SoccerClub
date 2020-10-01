@@ -8,7 +8,7 @@ namespace SoccerClub.GraphQL.GraphQLOperation
     {        
         public SoccerClubQuery(IMemberService memberService, ITeamService teamService)
         {
-            Field<ListGraphType<TeamType>>(
+            Field<ListGraphType<MemberType>>(
                 "members",
                 resolve: context => memberService.GetAsync()
             );

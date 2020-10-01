@@ -17,12 +17,12 @@ namespace SoccerClub.GraphQL.GraphQLOperation.Type.Member
             Field<ListGraphType<MemberType>>(
                 "trainers",
                 "Trainer info",
-                resolve: context => teamService.GetMembersAsync(context.Source.Id, Model.MemberType.Trainer)
+                resolve: context => teamService.GetMembersAsync(context.Source.Id, Model.RoleType.Trainer)
             );
             Field< ListGraphType<MemberType>>(
                 "players",
                 "Player info",
-                resolve: context => teamService.GetMembersAsync(context.Source.Id, Model.MemberType.Player)
+                resolve: context => teamService.GetMembersAsync(context.Source.Id, Model.RoleType.Player)
             );
         }
     }

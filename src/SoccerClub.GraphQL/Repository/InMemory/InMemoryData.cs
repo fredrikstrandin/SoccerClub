@@ -8,6 +8,10 @@ namespace SoccerClub.GraphQL.Repository.InMemory
 {
     public class InMemoryData
     {
+        private int _nextNo = 2;
+
+        public string NextId { get { return (++_nextNo).ToString(); }  }
+
         public List<TeamItem> Teams { get; set; } = new List<TeamItem>()
         {
             new TeamItem() { Id = "1", Name = "Boy 2003" },
@@ -16,8 +20,8 @@ namespace SoccerClub.GraphQL.Repository.InMemory
 
         public List<TeamPlayerItem> TeamPlayers { get; set; } = new List<TeamPlayerItem>()
         {
-            new TeamPlayerItem() { TeamId = "1", MemberId = "1", type = MemberType.Player },
-            new TeamPlayerItem() { TeamId = "1", MemberId = "2", type = MemberType.Player }
+            new TeamPlayerItem() { TeamId = "1", MemberId = "1", type = RoleType.Player },
+            new TeamPlayerItem() { TeamId = "1", MemberId = "2", type = RoleType.Player }
         };
 
         public List<MemberItem> MemberList { get; set; } = new List<MemberItem>()
@@ -27,7 +31,6 @@ namespace SoccerClub.GraphQL.Repository.InMemory
                 Id = "1",
                 FirstName = "Maria",
                 LastName = "Forsman",
-                Biography = "Like the game.",
                 Street = "Hornsgatan 32",
                 ZIP = "131 87",
                 City = "Stockholm",
@@ -38,7 +41,6 @@ namespace SoccerClub.GraphQL.Repository.InMemory
                 Id = "2",
                 FirstName = "Erik",
                 LastName = "Karlsson",
-                Biography = "For me I like to see player to be better.",
                 Street = "Hornsgatan 32",
                 ZIP = "419 65",
                 City = "Sandviken",

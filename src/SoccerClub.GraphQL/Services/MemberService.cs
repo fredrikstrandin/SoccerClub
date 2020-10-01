@@ -16,6 +16,11 @@ namespace SoccerClub.GraphQL.Services
             _memberRepository = memberRepository;
         }
 
+        public Task<MemberItem> CreateAsync(MemberInputItem item)
+        {
+            return _memberRepository.CreateAsync(item);
+        }
+
         public Task<List<MemberItem>> GetAsync()
         {
             return _memberRepository.GetAsync();

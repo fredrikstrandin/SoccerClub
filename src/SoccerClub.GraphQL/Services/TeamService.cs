@@ -25,7 +25,7 @@ namespace SoccerClub.GraphQL.Services
         {
             return _teamRepository.GetAsync(id);
         }
-        public Task<List<MemberItem>> GetMembersAsync(string teamId, MemberType type)
+        public Task<List<MemberItem>> GetMembersAsync(string teamId, RoleType type)
         {
             return _teamRepository.GetMembersAsync(teamId, type);
         }

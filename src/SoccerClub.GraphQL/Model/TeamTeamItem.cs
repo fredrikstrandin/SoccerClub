@@ -9,6 +9,6 @@ namespace SoccerClub.GraphQL.Model
     {
         public string TeamId { get; set; }
         public string MemberId { get; set; }
-        public MemberType type { get; set; }
+        public RoleType type { get; set; }
     }
 }
