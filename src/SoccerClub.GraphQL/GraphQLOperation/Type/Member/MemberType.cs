@@ -20,8 +20,6 @@ namespace SoccerClub.GraphQL.GraphQLOperation.Type.Member
                 "Member full name",
                 resolve: context =>
                 {
-                    context.Errors.Add(new ExecutionError("Member allredy exist"));
-
                     return $"{context.Source.FirstName} {context.Source.LastName}";
                 }
             );

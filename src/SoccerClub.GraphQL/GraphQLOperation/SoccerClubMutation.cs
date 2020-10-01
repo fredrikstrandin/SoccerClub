@@ -24,7 +24,6 @@ namespace SoccerClub.GraphQL.GraphQLOperation
                     return await context.TryAsyncResolve(
                         async c => await memberService.CreateAsync(profile));
                 });
-
         }
     }
 }
