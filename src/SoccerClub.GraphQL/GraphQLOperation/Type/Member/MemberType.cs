@@ -24,6 +24,18 @@ namespace SoccerClub.GraphQL.GraphQLOperation.Type.Member
                 }
             );
 
+            Field(t => t.Born, nullable: true).Name("born").Description("Member email");
+            Field<BooleanGraphType>(
+                "is_birthday",
+                "Is it mebers birthday",
+                resolve: context =>
+                {
+                    // In order for this to be correct, you must retrieve the user's time zone and compare.
+                    // But I make it easy for myself and assume the member is in Western Europe
+                    return context.Source.Born.Date == DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(1)).Date;
+                }
+            );
+            
             Field(t => t.Email, nullable: true).Name("email").Description("Member email");
 
             Field(t => t.Street, nullable: true).Name("street").Description("Member street");

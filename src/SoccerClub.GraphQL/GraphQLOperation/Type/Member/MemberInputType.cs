@@ -16,6 +16,7 @@ namespace SoccerClub.GraphQL.GraphQLOperation.Type.Member
             Field(x => x.FirstName, nullable: false).Name("first_name");
             Field(x => x.LastName, nullable: false).Name("last_name");
 
+            Field(x => x.Born, nullable: true).Name("born");
             Field(x => x.Email, nullable: true).Name("email");
             
             Field(x => x.Street, nullable: true).Name("street");

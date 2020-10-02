@@ -30,9 +30,13 @@ namespace SoccerClub.GraphQL.GraphQLOperation
                 }
             );
 
-            Field<ListGraphType<TeamType>>(
+            FieldAsync<ListGraphType<TeamType>>(
                 "teams",
-                resolve: context => teamService.GetAsync()
+                resolve: async context =>
+                {
+                    return await context.TryAsyncResolve(
+                        async c => await teamService.GetAsync());
+                }
             );
         }
     }
