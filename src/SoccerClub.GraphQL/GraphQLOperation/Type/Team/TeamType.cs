@@ -1,4 +1,5 @@
-﻿using GraphQL.Types;
+﻿using GraphQL;
+using GraphQL.Types;
 using SoccerClub.GraphQL.Interface;
 using SoccerClub.GraphQL.Model;
 using System;
@@ -14,15 +15,23 @@ namespace SoccerClub.GraphQL.GraphQLOperation.Type.Member
         {
             Field(t => t.Id).Name("id").Description("Id for the team");
             Field(t => t.Name).Name("name").Description("Team name");
-            Field<ListGraphType<MemberType>>(
+            FieldAsync<ListGraphType<MemberType>>(
                 "trainers",
                 "Trainer info",
-                resolve: context => teamService.GetMembersAsync(context.Source.Id, Model.RoleType.Trainer)
+                resolve: async context =>
+                {
+                    return await context.TryAsyncResolve(
+                        async c => await teamService.GetMembersAsync(context.Source.Id, RoleType.Trainer));
+                }
             );
-            Field< ListGraphType<MemberType>>(
+            FieldAsync<ListGraphType<MemberType>>(
                 "players",
                 "Player info",
-                resolve: context => teamService.GetMembersAsync(context.Source.Id, Model.RoleType.Player)
+                 resolve: async context =>
+                 {
+                     return await context.TryAsyncResolve(
+                         async c => await teamService.GetMembersAsync(context.Source.Id, RoleType.Player));
+                 }
             );
         }
     }
