@@ -32,7 +32,9 @@ namespace SoccerClub.GraphQL.GraphQLOperation.Type.Member
                 {
                     // In order for this to be correct, you must retrieve the user's time zone and compare.
                     // But I make it easy for myself and assume the member is in Western Europe
-                    return context.Source.Born.Date == DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(1)).Date;
+                    DateTime date = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(1)).Date;
+
+                    return context.Source.Born.Month == date.Month && context.Source.Born.Day == date.Day;
                 }
             );
             

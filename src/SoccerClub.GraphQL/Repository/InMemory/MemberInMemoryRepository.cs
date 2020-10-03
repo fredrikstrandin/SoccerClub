@@ -111,15 +111,6 @@ namespace SoccerClub.GraphQL.Repository
                             Email = member.Email,
                             Born = member.Born
                         });
-
-                        //if (teamMembers.ContainsKey(teamId))
-                        //{
-                        //    teamMembers[teamId].Add(member);
-                        //}
-                        //else
-                        //{
-                        //    teamMembers.Add(teamId, new List<MemberItem>() { member });
-                        //}
                     }
                 }
             }
