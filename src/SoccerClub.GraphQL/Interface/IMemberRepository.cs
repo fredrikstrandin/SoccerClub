@@ -1,5 +1,7 @@
 ﻿using SoccerClub.GraphQL.Model;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SoccerClub.GraphQL.Interface
@@ -8,7 +10,8 @@ namespace SoccerClub.GraphQL.Interface
     {
         Task<List<MemberItem>> GetAsync();
         Task<MemberItem> GetAsync(string id);
-        Task<MemberItem> CreateAsync(MemberInputItem item);
         Task<List<MemberItem>> GetAsync(IEnumerable<string> ids);
+        Task<MemberItem> CreateAsync(MemberInputItem item);
+        Task<ILookup<string, MemberTeamIdItem>> GetLookupAsync(IEnumerable<string> ids, CancellationToken cancellationToken);
     }
 }

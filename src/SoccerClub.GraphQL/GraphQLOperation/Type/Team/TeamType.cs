@@ -1,48 +1,55 @@
 ﻿using GraphQL;
+using GraphQL.DataLoader;
 using GraphQL.Types;
 using SoccerClub.GraphQL.Interface;
 using SoccerClub.GraphQL.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace SoccerClub.GraphQL.GraphQLOperation.Type.Member
 {
     public class TeamType : ObjectGraphType<TeamItem>
     {
-        public TeamType(IMemberService memberService)
+        public TeamType(IMemberService memberService, IDataLoaderContextAccessor dataLoaderAccessor)
         {
             Field(t => t.Id).Name("id").Description("Id for the team");
             Field(t => t.Name).Name("name").Description("Team name");
-            FieldAsync<ListGraphType<MemberType>>(
+            Field<ListGraphType<MemberType>>(
                 "trainers",
                 "Trainer info",
-                resolve: async context =>
+                resolve: context =>
                 {
-                    if(context.Source.Members == null)
+                    if (context.Source.Members == null)
                     {
                         return new List<MemberItem>();
                     }
 
-                    return await context.TryAsyncResolve(
-                        async c => await memberService.GetAsync(context.Source?.Members
-                            .Where(w => w.Type == RoleType.Trainer).Select(x => x.MemberId)));
+                    var loader =
+                        dataLoaderAccessor.Context.GetOrAddCollectionBatchLoader<string, MemberTeamIdItem>(
+                            "GetMemberId", memberService.GetLookupAsync);
+
+                    return loader.LoadAsync(context.Source.Id);
                 }
             );
-            FieldAsync<ListGraphType<MemberType>>(
+            Field<ListGraphType<MemberType>>(
                 "players",
                 "Player info",
-                 resolve: async context =>
+                resolve: context =>
                  {
                      if (context.Source.Members == null)
                      {
                          return new List<MemberItem>();
                      }
 
-                     return await context.TryAsyncResolve(
-                         async c => await memberService.GetAsync(context.Source?.Members
-                            .Where(w => w.Type == RoleType.Player).Select(x => x.MemberId)));
+                     var loader =
+                         dataLoaderAccessor.Context.GetOrAddCollectionBatchLoader<string, MemberTeamIdItem>(
+                             "GetMembersId", memberService.GetLookupAsync);
+
+                     return loader.LoadAsync(context.Source.Id);
                  }
             );
         }

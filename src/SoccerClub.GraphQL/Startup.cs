@@ -1,3 +1,4 @@
+using GraphQL.DataLoader;
 using GraphQL.Server;
 using GraphQL.Server.Ui.Playground;
 using Microsoft.AspNetCore.Builder;
@@ -39,6 +40,7 @@ namespace SoccerClub.GraphQL
                 options.EnableMetrics = false;
                 options.ExposeExceptions = false;
             })
+                .AddDataLoader()
                 .AddSystemTextJson()
                 .AddGraphTypes(ServiceLifetime.Scoped);
         }

@@ -21,15 +21,16 @@ namespace SoccerClub.GraphQL.Repository.InMemory
                 Members = new List<TeamMemberItem>()
                 {
                     new TeamMemberItem() { MemberId = "1", FirstName = "Maria", LastName = "Forsman", Type = RoleType.Player },
-                    new TeamMemberItem() { MemberId = "3", FirstName = "Eva", LastName = "Lindskog", Type = RoleType.Player }
+                    new TeamMemberItem() { MemberId = "3", FirstName = "Eva", LastName = "Lindskog", Type = RoleType.Player },
+                    new TeamMemberItem() { MemberId = "99", FirstName = "Katarina", LastName = "Fransson", Type = RoleType.Player }
                 }
             },
             new TeamItem() { Id = "2", 
                 Name = "Girl 2009",
-                //Members = new List<TeamMemberItem>()
-                //{
-                //    new TeamMemberItem() { MemberId = "2", FirstName = "Erik", LastName = "Karlsson", Type = RoleType.Player }
-                //}
+                Members = new List<TeamMemberItem>()
+                {
+                    new TeamMemberItem() { MemberId = "2", FirstName = "Erik", LastName = "Karlsson", Type = RoleType.Player }
+                }
             },
         };
 
@@ -69,6 +70,17 @@ namespace SoccerClub.GraphQL.Repository.InMemory
                 City = "Stockholm",
                 Born = DateTime.UtcNow.AddDays(365* 9 + 42),
                 Email = "eva.lindskog@spam.com"
+            },
+            new MemberItem()
+            {
+                Id = "99",
+                FirstName = "Katarina", 
+                LastName = "Fransson",
+                Street = "Birkagata 146",
+                ZIP = "123 45",
+                City = "Stockholm",
+                Born = DateTime.UtcNow.AddDays(365* 9 + 22),
+                Email = "katarina.fransson@spam.com"
             }
         };
     }

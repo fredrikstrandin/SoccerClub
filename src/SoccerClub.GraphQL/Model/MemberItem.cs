@@ -7,6 +7,10 @@ namespace SoccerClub.GraphQL.Model
 {
     public class MemberItem
     {
+        //public MemberItem() { }
+
+        //public MemberItem() { }
+
         public string Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -16,5 +20,10 @@ namespace SoccerClub.GraphQL.Model
         public string Street { get; set; }
         public string ZIP { get; set; }
         public string City { get; set; }
+    }
+
+    public class MemberTeamIdItem : MemberItem
+    {
+        public string TeamId { get; set; }
     }
 }
