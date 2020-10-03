@@ -9,5 +9,7 @@ namespace SoccerClub.GraphQL.Model
     {
         public string Id { get; set; }
         public string Name { get; set; }
+        public List<TeamMemberItem> Members { get; set; }
+        public List<ActivityItem> Activitys { get; set; }
     }
 }

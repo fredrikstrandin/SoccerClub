@@ -14,15 +14,25 @@ namespace SoccerClub.GraphQL.Repository.InMemory
 
         public List<TeamItem> Teams { get; set; } = new List<TeamItem>()
         {
-            new TeamItem() { Id = "1", Name = "Boy 2003" },
-            new TeamItem() { Id = "2", Name = "Girl 2009" },
+            new TeamItem() 
+            { 
+                Id = "1", 
+                Name = "Boy 2003",
+                Members = new List<TeamMemberItem>()
+                {
+                    new TeamMemberItem() { MemberId = "1", FirstName = "Maria", LastName = "Forsman", Type = RoleType.Player },
+                    new TeamMemberItem() { MemberId = "3", FirstName = "Eva", LastName = "Lindskog", Type = RoleType.Player }
+                }
+            },
+            new TeamItem() { Id = "2", 
+                Name = "Girl 2009",
+                //Members = new List<TeamMemberItem>()
+                //{
+                //    new TeamMemberItem() { MemberId = "2", FirstName = "Erik", LastName = "Karlsson", Type = RoleType.Player }
+                //}
+            },
         };
 
-        public List<TeamPlayerItem> TeamPlayers { get; set; } = new List<TeamPlayerItem>()
-        {
-            new TeamPlayerItem() { TeamId = "1", MemberId = "1", type = RoleType.Player },
-            new TeamPlayerItem() { TeamId = "1", MemberId = "2", type = RoleType.Player }
-        };
 
         public List<MemberItem> MemberList { get; set; } = new List<MemberItem>()
         {
@@ -34,6 +44,7 @@ namespace SoccerClub.GraphQL.Repository.InMemory
                 Street = "Hornsgatan 32",
                 ZIP = "131 87",
                 City = "Stockholm",
+                Born = DateTime.UtcNow.AddDays(365* 9 - 18),
                 Email = "maria.forsman@spam.com"
             },
             new MemberItem()
@@ -42,9 +53,22 @@ namespace SoccerClub.GraphQL.Repository.InMemory
                 FirstName = "Erik",
                 LastName = "Karlsson",
                 Street = "Hornsgatan 32",
-                ZIP = "419 65",
-                City = "Sandviken",
+                ZIP = "145 23",
+                City = "Stockholm",
+                //He will always has birthday ;)
+                Born = DateTime.UtcNow.AddYears(-9),
                 Email = "erik.karlsson@spam.com"
+            },
+            new MemberItem()
+            {
+                Id = "3",
+                FirstName = "Eva",
+                LastName = "Lindskog",
+                Street = "Oskarsgata 34",
+                ZIP = "123 45",
+                City = "Stockholm",
+                Born = DateTime.UtcNow.AddDays(365* 9 + 42),
+                Email = "eva.lindskog@spam.com"
             }
         };
     }

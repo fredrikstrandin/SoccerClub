@@ -45,5 +45,21 @@ namespace SoccerClub.GraphQL.Repository
         {
             return Task.FromResult(_data.MemberList.Where(x => x.Id == id).FirstOrDefault());
         }
+
+        public Task<List<MemberItem>> GetAsync(IEnumerable<string> ids)
+        {
+            List<MemberItem> members = new List<MemberItem>();
+            foreach (string id in ids)
+            {
+                var member = _data.MemberList.Where(x => x.Id == id).FirstOrDefault();
+
+                if(member != null)
+                {
+                    members.Add(member);
+                }
+            }
+
+            return Task.FromResult(members);
+        }
     }
 }

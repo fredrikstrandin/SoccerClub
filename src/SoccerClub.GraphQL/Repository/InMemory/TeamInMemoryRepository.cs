@@ -28,8 +28,12 @@ namespace SoccerClub.GraphQL.Repository.InMemory
 
         public Task<List<MemberItem>> GetMembersAsync(string teamId, RoleType type)
         {
-            List<string> playerIds = _data.TeamPlayers.Where(x => x.TeamId == teamId && x.type == type).Select(x => x.MemberId).ToList();
-
+            var playerIds = _data.Teams.Where(x => x.Id == teamId)
+                .FirstOrDefault()
+                .Members.Where(y => y.Type == type)
+                .Select(q => q.MemberId)
+                .ToList();
+            
             return Task.FromResult(_data.MemberList.Where(x => playerIds.Contains(x.Id)).ToList());
         }
     }

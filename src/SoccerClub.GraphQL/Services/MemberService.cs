@@ -30,5 +30,10 @@ namespace SoccerClub.GraphQL.Services
         {
             return _memberRepository.GetAsync(id);
         }
+
+        public Task<List<MemberItem>> GetAsync(IEnumerable<string> ids)
+        {
+            return _memberRepository.GetAsync(ids);            
+        }
     }
 }
