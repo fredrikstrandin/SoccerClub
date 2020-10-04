@@ -37,9 +37,9 @@ namespace SoccerClub.GraphQL.Repository
             return Task.FromResult(new MemberItem() { Id = id, FirstName = item.FirstName, LastName = item.LastName });
         }
 
-        public Task<List<MemberItem>> GetAsync()
+        public Task<List<MemberItem>> GetAsync(int? skip, int? take)
         {
-            return Task.FromResult(_data.MemberList);
+            return Task.FromResult(_data.MemberList.Skip(skip ?? 0).Take(take ?? int.MaxValue).ToList());
         }
 
         public Task<MemberItem> GetAsync(string id)

@@ -20,16 +20,16 @@ namespace SoccerClub.GraphQL.Repository.InMemory
                 Name = "Boy 2003",
                 Members = new List<TeamMemberItem>()
                 {
-                    new TeamMemberItem() { MemberId = "1", FirstName = "Maria", LastName = "Forsman", Type = RoleType.Player },
-                    new TeamMemberItem() { MemberId = "3", FirstName = "Eva", LastName = "Lindskog", Type = RoleType.Player },
-                    new TeamMemberItem() { MemberId = "99", FirstName = "Katarina", LastName = "Fransson", Type = RoleType.Player }
+                    new TeamMemberItem() { MemberId = "2", Type = RoleType.Player }
                 }
             },
             new TeamItem() { Id = "2", 
                 Name = "Girl 2009",
                 Members = new List<TeamMemberItem>()
                 {
-                    new TeamMemberItem() { MemberId = "2", FirstName = "Erik", LastName = "Karlsson", Type = RoleType.Player }
+                    new TeamMemberItem() { MemberId = "1", Type = RoleType.Player },
+                    new TeamMemberItem() { MemberId = "3", Type = RoleType.Player },
+                    new TeamMemberItem() { MemberId = "99", Type = RoleType.Player }
                 }
             },
         };

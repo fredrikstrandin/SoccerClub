@@ -22,9 +22,9 @@ namespace SoccerClub.GraphQL.Services
             return _memberRepository.CreateAsync(item);
         }
 
-        public Task<List<MemberItem>> GetAsync()
+        public Task<List<MemberItem>> GetAsync(int? skip, int? take)
         {
-            return _memberRepository.GetAsync();
+            return _memberRepository.GetAsync(skip, take);
         }
 
         public Task<MemberItem> GetAsync(string id)

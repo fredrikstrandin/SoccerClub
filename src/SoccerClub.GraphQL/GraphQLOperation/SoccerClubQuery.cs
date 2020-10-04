@@ -11,10 +11,17 @@ namespace SoccerClub.GraphQL.GraphQLOperation
         {
             FieldAsync<ListGraphType<MemberType>>(
                 "members",
+                arguments: new QueryArguments(
+                    new QueryArgument<IntGraphType> { Name = "skip", Description = "How many member will be skip from start." },
+                    new QueryArgument<IntGraphType> { Name = "take", Description = "How many members will be returned." }),
+
                 resolve: async context =>
                 {
+                    var skip = context.GetArgument<int?>("skip");
+                    var take = context.GetArgument<int?>("take");
+
                     return await context.TryAsyncResolve(
-                        async c => await memberService.GetAsync());
+                        async c => await memberService.GetAsync(skip, take));
                 }
             );
 

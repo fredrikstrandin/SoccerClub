@@ -27,7 +27,7 @@ namespace SoccerClub.GraphQL.GraphQLOperation.Type.Member
             Field(t => t.Born, nullable: true).Name("born").Description("Member email");
             Field<BooleanGraphType>(
                 "is_birthday",
-                "Is it mebers birthday",
+                "If it is members birthday or not",
                 resolve: context =>
                 {
                     // In order for this to be correct, you must retrieve the user's time zone and compare.

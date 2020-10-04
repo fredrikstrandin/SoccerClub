@@ -8,7 +8,7 @@ namespace SoccerClub.GraphQL.Interface
 {
     public interface IMemberRepository
     {
-        Task<List<MemberItem>> GetAsync();
+        Task<List<MemberItem>> GetAsync(int? skip, int? take);
         Task<MemberItem> GetAsync(string id);
         Task<List<MemberItem>> GetAsync(IEnumerable<string> ids);
         Task<MemberItem> CreateAsync(MemberInputItem item);
