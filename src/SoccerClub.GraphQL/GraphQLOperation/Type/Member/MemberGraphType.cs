@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace SoccerClub.GraphQL.GraphQLOperation.Type.Member
 {
-    public class MemberGraphType : ObjectGraphType<MemberItem>
+    public class BaseMemberGraphType<T> : ObjectGraphType<T>
+        where T : MemberItem
     {
-        public MemberGraphType()
+        public BaseMemberGraphType()
         {
             Field(t => t.Id).Name("id").Description("Id for member");
             Field(t => t.FirstName).Name("first_name").Description("Member first name");
@@ -45,4 +46,14 @@ namespace SoccerClub.GraphQL.GraphQLOperation.Type.Member
             Field(t => t.City, nullable: true).Name("city").Description("Member city");
         }
     }
+
+    public class MemberGraphType : BaseMemberGraphType<MemberItem>
+    {
+        public MemberGraphType() : base()
+        {
+
+        }
+    }
+
+
 }

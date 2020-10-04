@@ -1,6 +1,10 @@
-﻿using System;
+﻿using GraphQL;
+using GraphQLParser.AST;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace SoccerClub.GraphQL.Model
@@ -8,6 +12,7 @@ namespace SoccerClub.GraphQL.Model
     public class TeamInputItem
     {
         public string Name { get; set; }
+        [JsonPropertyName("age_group")]
         public int AgeGroup { get; set; }
         public List<TeamMemberInputItem> Members { get; set; }
     }

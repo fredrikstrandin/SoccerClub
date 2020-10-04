@@ -15,13 +15,13 @@ namespace SoccerClub.GraphQL.GraphQLOperation
     {
         public SoccerClubMutation(IMemberService memberService, ITeamService teamService)
         {
-            FieldAsync<StringGraphType>(
+            FieldAsync<IdGraphType>(
              "createTema",
              arguments: new QueryArguments(
                  new QueryArgument<NonNullGraphType<TeamInputGraphType>> { Name = "team" }),
              resolve: async context =>
              {
-                 var team = context.GetArgument<TeamInputItem>("team");
+                 TeamInputItem team = context.GetArgument<TeamInputItem>("team");
                  return await context.TryAsyncResolve(
                      async c => await teamService.CreateAsync(team));
              });
@@ -29,7 +29,7 @@ namespace SoccerClub.GraphQL.GraphQLOperation
             FieldAsync<StringGraphType>(
                 "createMember",
                 arguments: new QueryArguments(
-                    new QueryArgument<NonNullGraphType<TeamInputGraphType>> { Name = "member" }),
+                    new QueryArgument<NonNullGraphType<MemberInputGraphType>> { Name = "member" }),
                 resolve: async context =>
                 {
                     var profile = context.GetArgument<MemberInputItem>("member");

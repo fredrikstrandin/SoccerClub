@@ -63,31 +63,38 @@ namespace SoccerClub.GraphQL.Repository
             return Task.FromResult(members.ToLookup(x => x.Id));
         }
 
-        public Task<ILookup<string, MemberTeamIdItem>> GetLookupAsync(IEnumerable<string> ids, CancellationToken cancellationToken)
+        public Task<ILookup<string, MemberTeamIdItem>> GetLookupAsync(IEnumerable<string> ids, RoleEnum? role, CancellationToken cancellationToken)
         {
             List<string> mIds= new List<string>();
             Dictionary<string, MemberItem> members = new Dictionary<string, MemberItem>();
             List<MemberTeamIdItem> teamMembers = new List<MemberTeamIdItem>();
 
-            foreach (var id in ids)
-            {
-                var team = _data.Teams.Where(x => x.Id == id).FirstOrDefault();
+            //foreach (var id in ids)
+            //{
+            //    var team = _data.Teams.Where(x => x.Id == id).FirstOrDefault();
 
-                if (team != null)
-                {
-                    mIds.AddRange(team.Members.Select(x => x.MemberId));
-                }
-            }
+            //    if (team != null)
+            //    {
+            //        if (role.HasValue)
+            //        {
+            //            mIds.AddRange(team.Members.Where(x => x.Type == role.Value).Select(x => x.MemberId));
+            //        }
+            //        else
+            //        {
+            //            mIds.AddRange(team.Members.Select(x => x.MemberId));
+            //        }
+            //    }
+            //}
 
-            foreach (var memberId in mIds.Distinct())
-            {
-                MemberItem member = _data.MemberList.Where(x => x.Id == memberId).FirstOrDefault();
+            //foreach (var memberId in mIds.Distinct())
+            //{
+            //    MemberItem member = _data.MemberList.Where(x => x.Id == memberId).FirstOrDefault();
 
-                if(member != null)
-                {
-                    members.Add(memberId, member);
-                }
-            }
+            //    if(member != null)
+            //    {
+            //        members.Add(memberId, member);
+            //    }
+            //}
 
             foreach (var teamId in ids)
             {
@@ -97,11 +104,17 @@ namespace SoccerClub.GraphQL.Repository
                 {
                     foreach (var teamMember in team.Members)
                     {
+                        if(!(role.HasValue && teamMember.Role == role.Value))
+                        {
+                            continue;
+                        }
+
                         MemberItem member = _data.MemberList.Where(x => x.Id == teamMember.MemberId).FirstOrDefault();
 
                         teamMembers.Add(new MemberTeamIdItem()
                         {
                             TeamId = teamId,
+                            Role = teamMember.Role,
                             Id = member.Id,
                             FirstName = member.FirstName,
                             LastName = member.LastName,

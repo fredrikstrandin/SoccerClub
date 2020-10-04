@@ -13,9 +13,9 @@ namespace SoccerClub.GraphQL.GraphQLOperation.Type.Team
         {
             Name = "teamInput";
 
-            Field(x => x.Name, nullable: false).Name("name");
+            Field< NonNullGraphType<StringGraphType>>("name");
             Field(x => x.AgeGroup, nullable: false).Name("age_group");
-            Field(x => x.Members, nullable: false).Name("members");
+            Field<ListGraphType<TeamMemberInputGraphType>>("members");
         }
     }
 }

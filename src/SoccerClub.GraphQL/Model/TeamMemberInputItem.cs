@@ -8,6 +8,6 @@ namespace SoccerClub.GraphQL.Model
     public class TeamMemberInputItem
     {
         public string MemberId { get; set; }
-        public RoleType Type { get; set; }
+        public RoleEnum Role { get; set; }
     }
 }

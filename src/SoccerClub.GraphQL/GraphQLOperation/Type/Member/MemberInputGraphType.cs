@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SoccerClub.GraphQL.GraphQLOperation.Type.Member
 {
-    public class MemberInputType : InputObjectGraphType<MemberInputItem>
+    public class MemberInputGraphType : InputObjectGraphType<MemberInputItem>
     {
-        public MemberInputType() 
+        public MemberInputGraphType() 
         {
             Name = "memberInput";
 

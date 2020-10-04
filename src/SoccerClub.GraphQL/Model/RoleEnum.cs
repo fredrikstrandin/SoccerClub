@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace SoccerClub.GraphQL.Model
 {
-    public enum RoleType
+    public enum RoleEnum
     {
         Player,
         Trainer,
+        Officials,
         Parent
     }
 }

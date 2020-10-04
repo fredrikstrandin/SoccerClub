@@ -20,16 +20,16 @@ namespace SoccerClub.GraphQL.Repository.InMemory
                 Name = "Boy 2003",
                 Members = new List<TeamMemberItem>()
                 {
-                    new TeamMemberItem() { MemberId = "2", Type = RoleType.Player }
+                    new TeamMemberItem() { MemberId = "2", Role = RoleEnum.Player }
                 }
             },
             new TeamItem() { Id = "2", 
                 Name = "Girl 2009",
                 Members = new List<TeamMemberItem>()
                 {
-                    new TeamMemberItem() { MemberId = "1", Type = RoleType.Player },
-                    new TeamMemberItem() { MemberId = "3", Type = RoleType.Player },
-                    new TeamMemberItem() { MemberId = "99", Type = RoleType.Player }
+                    new TeamMemberItem() { MemberId = "1", Role = RoleEnum.Player },
+                    new TeamMemberItem() { MemberId = "3", Role = RoleEnum.Player },
+                    new TeamMemberItem() { MemberId = "99", Role = RoleEnum.Player }
                 }
             },
         };
@@ -45,7 +45,7 @@ namespace SoccerClub.GraphQL.Repository.InMemory
                 Street = "Hornsgatan 32",
                 ZIP = "131 87",
                 City = "Stockholm",
-                Born = DateTime.UtcNow.AddDays(365* 9 - 18),
+                Born = DateTime.UtcNow.AddDays(-365* 9 - 18),
                 Email = "maria.forsman@spam.com"
             },
             new MemberItem()
@@ -68,7 +68,7 @@ namespace SoccerClub.GraphQL.Repository.InMemory
                 Street = "Oskarsgata 34",
                 ZIP = "123 45",
                 City = "Stockholm",
-                Born = DateTime.UtcNow.AddDays(365* 9 + 42),
+                Born = DateTime.UtcNow.AddDays(-365* 9 + 42),
                 Email = "eva.lindskog@spam.com"
             },
             new MemberItem()
@@ -79,7 +79,7 @@ namespace SoccerClub.GraphQL.Repository.InMemory
                 Street = "Birkagata 146",
                 ZIP = "123 45",
                 City = "Stockholm",
-                Born = DateTime.UtcNow.AddDays(365* 9 + 22),
+                Born = DateTime.UtcNow.AddDays(-365* 9 + 22),
                 Email = "katarina.fransson@spam.com"
             }
         };

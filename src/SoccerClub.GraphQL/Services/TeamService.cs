@@ -27,11 +27,11 @@ namespace SoccerClub.GraphQL.Services
                 Members = new List<TeamMemberItem>()
             };
 
-            ILookup<string, MemberItem> lookupMember = await _memberRepository.GetAsync(team.Members.Select(x => x.MemberId));
+            ILookup<string, MemberItem> lookupMember = await _memberRepository.GetAsync(item.Members.Select(x => x.MemberId));
 
             foreach (var teamMember in item.Members)
             {
-                if (teamMember.Type == RoleType.Player)
+                if (teamMember.Role == RoleEnum.Player)
                 {
                     if(!lookupMember.Contains(teamMember.MemberId))
                     {
@@ -43,7 +43,7 @@ namespace SoccerClub.GraphQL.Services
 
                     if (team.AgeGroup >= member.Born.Year)
                     {
-                        team.Members.Add(new TeamMemberItem() { MemberId = teamMember.MemberId, Type = teamMember.Type });
+                        team.Members.Add(new TeamMemberItem() { MemberId = teamMember.MemberId, Role = teamMember.Role });
                     }
                     else
                     {
@@ -64,14 +64,9 @@ namespace SoccerClub.GraphQL.Services
         {
             return _teamRepository.GetAsync(id);
         }
-        public Task<List<MemberItem>> GetMembersAsync(string teamId, RoleType type)
+        public Task<List<MemberItem>> GetMembersAsync(string teamId, RoleEnum type)
         {
             return _teamRepository.GetMembersAsync(teamId, type);
-        }
-
-        Task<string> ITeamService.CreateAsync(TeamInputItem team)
-        {
-            throw new NotImplementedException();
         }
     }
 }

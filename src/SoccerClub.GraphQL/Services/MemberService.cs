@@ -32,14 +32,29 @@ namespace SoccerClub.GraphQL.Services
             return _memberRepository.GetAsync(id);
         }
 
-        public Task<ILookup<string, MemberItem>> GetAsync(IEnumerable<string> ids)
+        public async Task<ILookup<string, MemberTeamIdItem>> GetAllAsync(IEnumerable<string> ids, CancellationToken cancellationToken)
         {
-            return _memberRepository.GetAsync(ids);            
+            return await _memberRepository.GetLookupAsync(ids, RoleEnum.Officials, cancellationToken);            
         }
 
-        public async Task<ILookup<string, MemberTeamIdItem>> GetLookupAsync(IEnumerable<string> ids, CancellationToken cancellationToken)
+        public async Task<ILookup<string, MemberTeamIdItem>> GetOfficialsAsync(IEnumerable<string> ids, CancellationToken cancellationToken)
         {
-            return await _memberRepository.GetLookupAsync(ids, cancellationToken);
+            return await _memberRepository.GetLookupAsync(ids, RoleEnum.Officials, cancellationToken);
+        }
+
+        public async Task<ILookup<string, MemberTeamIdItem>> GetParentsAsync(IEnumerable<string> ids, CancellationToken cancellationToken)
+        {
+            return await _memberRepository.GetLookupAsync(ids, RoleEnum.Parent, cancellationToken);
+        }
+
+        public async Task<ILookup<string, MemberTeamIdItem>> GetPlayersAsync(IEnumerable<string> ids, CancellationToken cancellationToken)
+        {
+            return await _memberRepository.GetLookupAsync(ids, RoleEnum.Player, cancellationToken);
+        }
+
+        public async Task<ILookup<string, MemberTeamIdItem>> GetTrainersAsync(IEnumerable<string> ids, CancellationToken cancellationToken)
+        {
+            return await _memberRepository.GetLookupAsync(ids, RoleEnum.Trainer, cancellationToken);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace SoccerClub.GraphQL.Interface
         Task<MemberItem> GetAsync(string id);
         Task<ILookup<string, MemberItem>> GetAsync(IEnumerable<string> ids);
         Task<string> CreateAsync(MemberInputItem item);
-        Task<ILookup<string, MemberTeamIdItem>> GetLookupAsync(IEnumerable<string> ids, CancellationToken cancellationToken);
+        Task<ILookup<string, MemberTeamIdItem>> GetLookupAsync(IEnumerable<string> ids, RoleEnum? role, CancellationToken cancellationToken);
         
     }
 }

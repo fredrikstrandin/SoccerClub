@@ -14,7 +14,7 @@ namespace SoccerClub.GraphQL.GraphQLOperation.Type.Team
             Name = "team_memberInput";
 
             Field(x => x.MemberId, nullable: false).Name("member_id");
-            Field(x => x.Type, nullable: false).Name("type");
+            Field<RoleEnumGraphType>("role", "Members role in the team");
         }
     }
 }
