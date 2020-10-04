@@ -9,7 +9,7 @@ namespace SoccerClub.GraphQL.GraphQLOperation
     {        
         public SoccerClubQuery(IMemberService memberService, ITeamService teamService)
         {
-            FieldAsync<ListGraphType<MemberType>>(
+            FieldAsync<ListGraphType<MemberGraphType>>(
                 "members",
                 arguments: new QueryArguments(
                     new QueryArgument<IntGraphType> { Name = "skip", Description = "How many member will be skip from start." },
@@ -25,7 +25,7 @@ namespace SoccerClub.GraphQL.GraphQLOperation
                 }
             );
 
-            FieldAsync<MemberType>(
+            FieldAsync<MemberGraphType>(
                 "member",
                 arguments: new QueryArguments(
                     new QueryArgument<StringGraphType> { Name = "member_id", }),
@@ -37,7 +37,7 @@ namespace SoccerClub.GraphQL.GraphQLOperation
                 }
             );
 
-            FieldAsync<ListGraphType<TeamType>>(
+            FieldAsync<ListGraphType<TeamGraphType>>(
                 "teams",
                 resolve: async context =>
                 {

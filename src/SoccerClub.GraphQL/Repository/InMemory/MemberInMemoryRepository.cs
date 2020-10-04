@@ -18,7 +18,7 @@ namespace SoccerClub.GraphQL.Repository
             _data = data;
         }
 
-        public Task<MemberItem> CreateAsync(MemberInputItem item)
+        public Task<string> CreateAsync(MemberInputItem item)
         {
             string id = _data.NextId;
             _data.MemberList.Add(new MemberItem()
@@ -34,7 +34,7 @@ namespace SoccerClub.GraphQL.Repository
             });
             
 
-            return Task.FromResult(new MemberItem() { Id = id, FirstName = item.FirstName, LastName = item.LastName });
+            return Task.FromResult(id);
         }
 
         public Task<List<MemberItem>> GetAsync(int? skip, int? take)
@@ -47,7 +47,7 @@ namespace SoccerClub.GraphQL.Repository
             return Task.FromResult(_data.MemberList.Where(x => x.Id == id).FirstOrDefault());
         }
 
-        public Task<List<MemberItem>> GetAsync(IEnumerable<string> ids)
+        public Task<ILookup<string, MemberItem>> GetAsync(IEnumerable<string> ids)
         {
             List<MemberItem> members = new List<MemberItem>();
             foreach (string id in ids)
@@ -60,10 +60,10 @@ namespace SoccerClub.GraphQL.Repository
                 }
             }
 
-            return Task.FromResult(members);
+            return Task.FromResult(members.ToLookup(x => x.Id));
         }
 
-        public async Task<ILookup<string, MemberTeamIdItem>> GetLookupAsync(IEnumerable<string> ids, CancellationToken cancellationToken)
+        public Task<ILookup<string, MemberTeamIdItem>> GetLookupAsync(IEnumerable<string> ids, CancellationToken cancellationToken)
         {
             List<string> mIds= new List<string>();
             Dictionary<string, MemberItem> members = new Dictionary<string, MemberItem>();
@@ -115,7 +115,7 @@ namespace SoccerClub.GraphQL.Repository
                 }
             }
             
-            return teamMembers.ToLookup(x => x.TeamId);
+            return Task.FromResult(teamMembers.ToLookup(x => x.TeamId));
         }
     }
 }

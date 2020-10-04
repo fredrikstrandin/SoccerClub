@@ -17,7 +17,7 @@ namespace SoccerClub.GraphQL.Services
             _memberRepository = memberRepository;
         }
 
-        public Task<MemberItem> CreateAsync(MemberInputItem item)
+        public Task<string> CreateAsync(MemberInputItem item)
         {
             return _memberRepository.CreateAsync(item);
         }
@@ -32,7 +32,7 @@ namespace SoccerClub.GraphQL.Services
             return _memberRepository.GetAsync(id);
         }
 
-        public Task<List<MemberItem>> GetAsync(IEnumerable<string> ids)
+        public Task<ILookup<string, MemberItem>> GetAsync(IEnumerable<string> ids)
         {
             return _memberRepository.GetAsync(ids);            
         }

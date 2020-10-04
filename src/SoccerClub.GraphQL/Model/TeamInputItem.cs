@@ -5,13 +5,10 @@ using System.Threading.Tasks;
 
 namespace SoccerClub.GraphQL.Model
 {
-    public class TeamItem
+    public class TeamInputItem
     {
-        public string Id { get; set; }
         public string Name { get; set; }
         public int AgeGroup { get; set; }
-        public List<TeamMemberItem> Members { get; set; }
-        public List<ActivityItem> Activitys { get; set; }
-        
+        public List<TeamMemberInputItem> Members { get; set; }
     }
 }

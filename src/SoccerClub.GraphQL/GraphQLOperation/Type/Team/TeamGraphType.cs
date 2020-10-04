@@ -12,13 +12,15 @@ using System.Threading.Tasks;
 
 namespace SoccerClub.GraphQL.GraphQLOperation.Type.Member
 {
-    public class TeamType : ObjectGraphType<TeamItem>
+    public class TeamGraphType : ObjectGraphType<TeamItem>
     {
-        public TeamType(IMemberService memberService, IDataLoaderContextAccessor dataLoaderAccessor)
+        public TeamGraphType(IMemberService memberService, IDataLoaderContextAccessor dataLoaderAccessor)
         {
-            Field(t => t.Id).Name("id").Description("Id for the team");
-            Field(t => t.Name).Name("name").Description("Team name");
-            Field<ListGraphType<MemberType>>(
+            Field(t => t.Id, nullable: false).Name("id").Description("Id for the team");
+            Field(t => t.Name, nullable: false).Name("name").Description("Team name");
+            Field(t => t.AgeGroup, nullable: false).Name("age_group").Description("The age of the age group");
+
+            Field<ListGraphType<MemberGraphType>>(
                 "trainers",
                 "Trainer info",
                 resolve: context =>
@@ -35,7 +37,7 @@ namespace SoccerClub.GraphQL.GraphQLOperation.Type.Member
                     return loader.LoadAsync(context.Source.Id);
                 }
             );
-            Field<ListGraphType<MemberType>>(
+            Field<ListGraphType<MemberGraphType>>(
                 "players",
                 "Player info",
                 resolve: context =>

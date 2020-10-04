@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace SoccerClub.GraphQL.GraphQLOperation.Type.Member
 {
-    public class MemberType : ObjectGraphType<MemberItem>
+    public class MemberGraphType : ObjectGraphType<MemberItem>
     {
-        public MemberType()
+        public MemberGraphType()
         {
             Field(t => t.Id).Name("id").Description("Id for member");
             Field(t => t.FirstName).Name("first_name").Description("Member first name");

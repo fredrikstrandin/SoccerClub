@@ -16,6 +16,15 @@ namespace SoccerClub.GraphQL.Repository.InMemory
             _data = data;
         }
 
+        public Task<string> CreateAsync(TeamItem team)
+        {
+            team.Id = _data.NextId;
+
+            _data.Teams.Add(team);
+
+            return Task.FromResult(team.Id);
+        }
+
         public Task<List<TeamItem>> GetAsync()
         {
             return Task.FromResult(_data.Teams);
