@@ -1,6 +1,5 @@
 ﻿using SoccerClub.GraphQLServer.Interface;
 using SoccerClub.GraphQLServer.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -34,7 +33,7 @@ namespace SoccerClub.GraphQLServer.Services
 
         public async Task<ILookup<string, MemberTeamIdItem>> GetAllAsync(IEnumerable<string> ids, CancellationToken cancellationToken)
         {
-            return await _memberRepository.GetLookupAsync(ids, RoleEnum.Officials, cancellationToken);            
+            return await _memberRepository.GetLookupAsync(ids, RoleEnum.Officials, cancellationToken);
         }
 
         public async Task<ILookup<string, MemberTeamIdItem>> GetOfficialsAsync(IEnumerable<string> ids, CancellationToken cancellationToken)

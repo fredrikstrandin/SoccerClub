@@ -33,7 +33,7 @@ namespace SoccerClub.GraphQLServer.Services
             {
                 if (teamMember.Role == RoleEnum.Player)
                 {
-                    if(!lookupMember.Contains(teamMember.MemberId))
+                    if (!lookupMember.Contains(teamMember.MemberId))
                     {
                         throw new ApplicationException($"Player {teamMember.MemberId} do not exist");
                     }

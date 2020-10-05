@@ -1,10 +1,6 @@
-﻿using GraphQL;
-using GraphQL.Types;
+﻿using GraphQL.Types;
 using SoccerClub.GraphQLServer.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SoccerClub.GraphQLServer.GraphQLOperation.Type.Member
 {
@@ -38,7 +34,7 @@ namespace SoccerClub.GraphQLServer.GraphQLOperation.Type.Member
                     return context.Source.Born.Month == date.Month && context.Source.Born.Day == date.Day;
                 }
             );
-            
+
             Field(t => t.Email, nullable: true).Name("email").Description("Member email");
 
             Field(t => t.Street, nullable: true).Name("street").Description("Member street");

@@ -1,6 +1,5 @@
 ﻿using SoccerClub.GraphQLServer.Interface;
 using SoccerClub.GraphQLServer.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -42,7 +41,7 @@ namespace SoccerClub.GraphQLServer.Repository.InMemory
                 .Members.Where(y => y.Role == type)
                 .Select(q => q.MemberId)
                 .ToList();
-            
+
             return Task.FromResult(_data.MemberList.Where(x => playerIds.Contains(x.Id)).ToList());
         }
     }

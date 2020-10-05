@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SoccerClub.GraphQLServer.Model
 {
@@ -16,7 +13,7 @@ namespace SoccerClub.GraphQLServer.Model
         public string LastName { get; set; }
         public DateTime Born { get; set; }
         public string Email { get; set; }
-        
+
         public string Street { get; set; }
         public string ZIP { get; set; }
         public string City { get; set; }

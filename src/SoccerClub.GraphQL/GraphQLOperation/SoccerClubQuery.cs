@@ -6,7 +6,7 @@ using SoccerClub.GraphQLServer.Interface;
 namespace SoccerClub.GraphQLServer.GraphQLOperation
 {
     public class SoccerClubQuery : ObjectGraphType
-    {        
+    {
         public SoccerClubQuery(IMemberService memberService, ITeamService teamService)
         {
             FieldAsync<ListGraphType<MemberGraphType>>(
