@@ -62,11 +62,10 @@ namespace SoccerClub.GraphQL
             app.UseGraphQL<SoccerClubSchema>();
             app.UseGraphQLPlayground(new GraphQLPlaygroundOptions());
 
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapHealthChecks("/healthcheck");
-            //    endpoints.MapControllers();
-            //});
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapHealthChecks("/healthcheck");
+            });
         }
     }
 }

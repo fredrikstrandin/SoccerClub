@@ -26,7 +26,7 @@ namespace SoccerClub.GraphQL.GraphQLOperation
                      async c => await teamService.CreateAsync(team));
              });
 
-            FieldAsync<StringGraphType>(
+            FieldAsync<IdGraphType>(
                 "createMember",
                 arguments: new QueryArguments(
                     new QueryArgument<NonNullGraphType<MemberInputGraphType>> { Name = "member" }),

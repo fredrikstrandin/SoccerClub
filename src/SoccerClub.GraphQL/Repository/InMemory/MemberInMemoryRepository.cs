@@ -32,7 +32,6 @@ namespace SoccerClub.GraphQL.Repository
                 ZIP = item.ZIP,
                 City = item.City,
             });
-            
 
             return Task.FromResult(id);
         }
