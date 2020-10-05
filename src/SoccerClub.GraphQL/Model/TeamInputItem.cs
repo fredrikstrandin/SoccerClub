@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace SoccerClub.GraphQL.Model
+namespace SoccerClub.GraphQLServer.Model
 {
     public class TeamInputItem
     {

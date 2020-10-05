@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SoccerClub.GraphQL.GraphQLOperation;
-using SoccerClub.GraphQL.Interface;
-using SoccerClub.GraphQL.Repository.InMemory;
-using SoccerClub.GraphQL.Services;
+using SoccerClub.GraphQLServer.GraphQLOperation;
+using SoccerClub.GraphQLServer.Interface;
+using SoccerClub.GraphQLServer.Repository.InMemory;
+using SoccerClub.GraphQLServer.Services;
 
-namespace SoccerClub.GraphQL
+namespace SoccerClub.GraphQLServer
 {
     public class Startup
     {

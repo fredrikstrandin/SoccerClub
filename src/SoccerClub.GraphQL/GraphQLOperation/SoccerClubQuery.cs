@@ -1,9 +1,9 @@
 ﻿using GraphQL;
 using GraphQL.Types;
-using SoccerClub.GraphQL.GraphQLOperation.Type.Member;
-using SoccerClub.GraphQL.Interface;
+using SoccerClub.GraphQLServer.GraphQLOperation.Type.Member;
+using SoccerClub.GraphQLServer.Interface;
 
-namespace SoccerClub.GraphQL.GraphQLOperation
+namespace SoccerClub.GraphQLServer.GraphQLOperation
 {
     public class SoccerClubQuery : ObjectGraphType
     {        

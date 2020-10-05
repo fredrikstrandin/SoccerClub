@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace SoccerClub.GraphQL.IntegrationTests
+namespace SoccerClub.GraphQLServer.IntegrationTests
 {
     public class TeamTests : IClassFixture<WebApplicationFactory<Startup>>
     {

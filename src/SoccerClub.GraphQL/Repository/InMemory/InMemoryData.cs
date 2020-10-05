@@ -1,10 +1,10 @@
-﻿using SoccerClub.GraphQL.Model;
+﻿using SoccerClub.GraphQLServer.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SoccerClub.GraphQL.Repository.InMemory
+namespace SoccerClub.GraphQLServer.Repository.InMemory
 {
     public class InMemoryData
     {

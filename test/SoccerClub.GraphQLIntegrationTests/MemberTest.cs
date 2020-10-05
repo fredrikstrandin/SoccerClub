@@ -1,19 +1,13 @@
-﻿using GraphQL.Client.Http;
+﻿using GraphQL;
+using GraphQL.Client.Http;
+using GraphQL.Client.Serializer.SystemTextJson;
 using Microsoft.AspNetCore.Mvc.Testing;
-using SoccerClub.GraphQL;
+using SoccerClub.GraphQLServer;
+using SoccerClub.GraphQLServer.IntegrationTests.Models;
 using System;
 using System.Net.Http;
-using GraphQL.Client.Serializer.SystemTextJson;
-using Xunit;
 using System.Threading.Tasks;
-using System.Text;
-using GraphQL.Client.Abstractions;
-using GraphQL;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
-using SoccerClub.GraphQL.IntegrationTests.Models;
-using System.Diagnostics;
-using GraphQL.NewtonsoftJson;
+using Xunit;
 
 namespace SoccerClub.GraphQLs.IntegrationTests
 {

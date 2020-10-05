@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using SoccerClub.GraphQL.Interface;
+using SoccerClub.GraphQLServer.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SoccerClub.GraphQL.Repository.InMemory
+namespace SoccerClub.GraphQLServer.Repository.InMemory
 {
     public static class InMemoryExtention
     {

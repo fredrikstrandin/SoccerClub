@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace SoccerClub.GraphQL.IntegrationTests
+namespace SoccerClub.GraphQLServer.IntegrationTests
 {
     public class HealthCheckTests : IClassFixture<WebApplicationFactory<Startup>>
     {

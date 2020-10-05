@@ -1,13 +1,13 @@
-﻿using SoccerClub.GraphQL.Interface;
-using SoccerClub.GraphQL.Model;
-using SoccerClub.GraphQL.Repository.InMemory;
+﻿using SoccerClub.GraphQLServer.Interface;
+using SoccerClub.GraphQLServer.Model;
+using SoccerClub.GraphQLServer.Repository.InMemory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SoccerClub.GraphQL.Repository
+namespace SoccerClub.GraphQLServer.Repository
 {
     public class MemberInMemoryRepository : IMemberRepository
     {
