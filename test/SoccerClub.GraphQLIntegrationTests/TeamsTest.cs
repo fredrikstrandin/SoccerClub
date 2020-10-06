@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.TagHelpers;
-using Microsoft.AspNetCore.Mvc.Testing;
+﻿using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +16,7 @@ namespace SoccerClub.GraphQLServer.IntegrationTests
         }
 
         [Fact]
-        public async Task HealthCheck_ReturnsOk()
+        public async Task get_teams()
         {
             HttpContent context = new StringContent("{\"query\": \"{teams{id, players {id, first_name, last_name, is_birthday}}}\"}",
                 Encoding.UTF8, "application/json");

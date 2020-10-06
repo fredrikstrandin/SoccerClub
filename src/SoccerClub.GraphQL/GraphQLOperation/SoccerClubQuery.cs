@@ -2,6 +2,8 @@
 using GraphQL.Types;
 using SoccerClub.GraphQLServer.GraphQLOperation.Type.Member;
 using SoccerClub.GraphQLServer.Interface;
+using SoccerClub.GraphQLServer.Model;
+using System;
 
 namespace SoccerClub.GraphQLServer.GraphQLOperation
 {
@@ -28,12 +30,21 @@ namespace SoccerClub.GraphQLServer.GraphQLOperation
             FieldAsync<MemberGraphType>(
                 "member",
                 arguments: new QueryArguments(
-                    new QueryArgument<StringGraphType> { Name = "member_id", }),
+                    new QueryArgument<StringGraphType> { Name = "id", }),
                 resolve: async context =>
                 {
-                    var id = context.GetArgument<string>("member_id");
+                    var id = context.GetArgument<string>("id");
                     return await context.TryAsyncResolve(
-                        async c => await memberService.GetAsync(id));
+                        async c => {
+                            MemberItem item = await memberService.GetAsync(id);
+                            if(item == null)
+                            {
+                                throw new ApplicationException($"No member has id {id}");
+                            }
+
+                            return item;
+                        }
+                    );
                 }
             );
 

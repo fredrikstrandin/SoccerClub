@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SoccerClub.GraphQLServer.IntegrationTests.Models
+﻿namespace SoccerClub.GraphQLServer.IntegrationTests.Models
 {
-    public class MemeberItem
+    public class MemberDTO
     {
         public Member member { get; set; }
     }

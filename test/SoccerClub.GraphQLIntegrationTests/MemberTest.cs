@@ -2,14 +2,14 @@
 using GraphQL.Client.Http;
 using GraphQL.Client.Serializer.SystemTextJson;
 using Microsoft.AspNetCore.Mvc.Testing;
-using SoccerClub.GraphQLServer;
 using SoccerClub.GraphQLServer.IntegrationTests.Models;
 using System;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace SoccerClub.GraphQLs.IntegrationTests
+namespace SoccerClub.GraphQLServer.IntegrationTests
 {
     public class MemberTest : IClassFixture<WebApplicationFactory<Startup>>
     {
@@ -32,7 +32,7 @@ namespace SoccerClub.GraphQLs.IntegrationTests
         {
             var memberRequest = new GraphQLRequest
             {
-                Query = 
+                Query =
                 @"{ 
                     member(member_id: ""1"") {
                         first_name,
@@ -40,8 +40,8 @@ namespace SoccerClub.GraphQLs.IntegrationTests
                  }"
             };
 
-            var member = await _graphQLClient.SendQueryAsync<MemeberItem>(memberRequest);
-
+            GraphQLResponse<MemberDTO> member = await _graphQLClient.SendQueryAsync<MemberDTO>(memberRequest);
+            
             Assert.Equal("Maria", member.Data.member.first_name);
         }
 

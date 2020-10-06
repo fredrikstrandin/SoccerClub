@@ -32,7 +32,7 @@ namespace SoccerClub.GraphQLServer
 
             services.AddInMemoryRepository();
 
-            services.AddScoped<SoccerClubSchema>();
+            services.AddSingleton<SoccerClubSchema>();
 
             services.AddGraphQL(options =>
             {
@@ -41,7 +41,7 @@ namespace SoccerClub.GraphQLServer
             })
                 .AddDataLoader()
                 .AddSystemTextJson()
-                .AddGraphTypes(ServiceLifetime.Scoped);
+                .AddGraphTypes(ServiceLifetime.Singleton);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

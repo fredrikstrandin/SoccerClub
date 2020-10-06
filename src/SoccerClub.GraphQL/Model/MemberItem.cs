@@ -4,10 +4,6 @@ namespace SoccerClub.GraphQLServer.Model
 {
     public class MemberItem
     {
-        //public MemberItem() { }
-
-        //public MemberItem() { }
-
         public string Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
