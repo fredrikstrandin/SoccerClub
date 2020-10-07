@@ -38,7 +38,6 @@ namespace SoccerClub.GraphQL
             services.AddGraphQL(options =>
             {
                 options.EnableMetrics = false;
-                options.ExposeExceptions = false;
             })
                 .AddDataLoader()
                 .AddSystemTextJson()

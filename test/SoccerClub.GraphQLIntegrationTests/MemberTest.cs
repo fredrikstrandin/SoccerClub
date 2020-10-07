@@ -71,7 +71,7 @@ namespace SoccerClub.GraphQLs.IntegrationTests
 
             var member = await _graphQLClient.SendMutationAsync<MemberCreateReturn>(memberRequest);
 
-            Assert.NotNull(member);
+            Assert.NotNull(member.Data.createMember);
         }
     }
 }

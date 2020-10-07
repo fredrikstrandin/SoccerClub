@@ -22,8 +22,7 @@ namespace SoccerClub.GraphQL.GraphQLOperation
              resolve: async context =>
              {
                  TeamInputItem team = context.GetArgument<TeamInputItem>("team");
-                 return await context.TryAsyncResolve(
-                     async c => await teamService.CreateAsync(team));
+                 return await teamService.CreateAsync(team);
              });
 
             FieldAsync<IdGraphType>(
@@ -33,8 +32,7 @@ namespace SoccerClub.GraphQL.GraphQLOperation
                 resolve: async context =>
                 {
                     var profile = context.GetArgument<MemberInputItem>("member");
-                    return await context.TryAsyncResolve(
-                        async c => await memberService.CreateAsync(profile));
+                    return await memberService.CreateAsync(profile);
                 });
         }
     }

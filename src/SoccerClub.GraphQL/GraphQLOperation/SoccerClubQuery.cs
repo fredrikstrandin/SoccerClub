@@ -20,8 +20,7 @@ namespace SoccerClub.GraphQL.GraphQLOperation
                     var skip = context.GetArgument<int?>("skip");
                     var take = context.GetArgument<int?>("take");
 
-                    return await context.TryAsyncResolve(
-                        async c => await memberService.GetAsync(skip, take));
+                    return await memberService.GetAsync(skip, take);
                 }
             );
 
@@ -32,8 +31,7 @@ namespace SoccerClub.GraphQL.GraphQLOperation
                 resolve: async context =>
                 {
                     var id = context.GetArgument<string>("member_id");
-                    return await context.TryAsyncResolve(
-                        async c => await memberService.GetAsync(id));
+                    return await memberService.GetAsync(id);
                 }
             );
 
@@ -41,8 +39,7 @@ namespace SoccerClub.GraphQL.GraphQLOperation
                 "teams",
                 resolve: async context =>
                 {
-                    return await context.TryAsyncResolve(
-                        async c => await teamService.GetAsync());
+                    return await teamService.GetAsync();
                 }
             );
         }
