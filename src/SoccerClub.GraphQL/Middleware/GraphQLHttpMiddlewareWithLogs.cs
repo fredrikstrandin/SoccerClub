@@ -1,5 +1,4 @@
-﻿using GraphQL.Server.Common;
-using GraphQL.Server.Transports.AspNetCore;
+﻿using GraphQL.Server.Transports.AspNetCore;
 using GraphQL.Server.Transports.AspNetCore.Common;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Http;

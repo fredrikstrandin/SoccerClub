@@ -6,11 +6,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using SoccerClub.GraphQL.GraphQLOperation;
-using SoccerClub.GraphQL.Interface;
 using SoccerClub.GraphQL.Middleware;
-using SoccerClub.GraphQL.Repository.InMemory;
-using SoccerClub.GraphQL.Services;
+using SoccerClub.GraphQLServer.GraphQLOperation;
+using SoccerClub.GraphQLServer.Interface;
+using SoccerClub.GraphQLServer.Repository.InMemory;
+using SoccerClub.GraphQLServer.Services;
 
 namespace SoccerClub.GraphQLServer
 {
@@ -47,7 +47,7 @@ namespace SoccerClub.GraphQLServer
                 .AddDataLoader()
                 .AddSystemTextJson()
                 .AddErrorInfoProvider(opt => opt.ExposeExceptionStackTrace = Environment.IsDevelopment())
-                .AddGraphTypes(ServiceLifetime.Scoped);
+                .AddGraphTypes(ServiceLifetime.Singleton);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

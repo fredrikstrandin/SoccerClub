@@ -1,6 +1,6 @@
 ﻿using GraphQL;
-using SoccerClub.GraphQL.Interface;
-using SoccerClub.GraphQL.Model;
+using SoccerClub.GraphQLServer.Interface;
+using SoccerClub.GraphQLServer.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -4,7 +4,6 @@ using GraphQL.Client.Serializer.SystemTextJson;
 using Microsoft.AspNetCore.Mvc.Testing;
 using SoccerClub.GraphQLServer.IntegrationTests.Models;
 using System;
-using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
@@ -34,7 +33,7 @@ namespace SoccerClub.GraphQLServer.IntegrationTests
             {
                 Query =
                 @"{ 
-                    member(member_id: ""1"") {
+                    member(id: ""1"") {
                         first_name,
                      }
                  }"

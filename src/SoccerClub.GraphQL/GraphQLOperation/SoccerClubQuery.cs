@@ -1,13 +1,7 @@
 ﻿using GraphQL;
-using GraphQL.Execution;
 using GraphQL.Types;
-using GraphQL.Validation.Rules;
-using SoccerClub.GraphQL.GraphQLOperation.Type.Member;
-using SoccerClub.GraphQL.Interface;
 using SoccerClub.GraphQLServer.GraphQLOperation.Type.Member;
 using SoccerClub.GraphQLServer.Interface;
-using SoccerClub.GraphQLServer.Model;
-using System;
 
 namespace SoccerClub.GraphQLServer.GraphQLOperation
 {
@@ -36,7 +30,7 @@ namespace SoccerClub.GraphQLServer.GraphQLOperation
                     new QueryArgument<StringGraphType> { Name = "id", }),
                 resolve: async context =>
                 {
-                    var id = context.GetArgument<string>("member_id");
+                    var id = context.GetArgument<string>("id");
                     return await memberService.GetAsync(id);
                 }
             );
