@@ -1,4 +1,5 @@
-﻿using SoccerClub.GraphQL.Interface;
+﻿using GraphQL;
+using SoccerClub.GraphQL.Interface;
 using SoccerClub.GraphQL.Model;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,7 @@ namespace SoccerClub.GraphQL.Services
                 {
                     if(!lookupMember.Contains(teamMember.MemberId))
                     {
-                        throw new ApplicationException($"Player {teamMember.MemberId} do not exist");
+                        throw new ExecutionError($"Player {teamMember.MemberId} do not exist");
                     }
 
                     //It will only be one
@@ -47,7 +48,7 @@ namespace SoccerClub.GraphQL.Services
                     }
                     else
                     {
-                        throw new ApplicationException($"Player {member.Id} is to old to play for this team");
+                        throw new ExecutionError($"Player {member.Id} is to old to play for this team");
                     }
                 }
             }

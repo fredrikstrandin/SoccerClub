@@ -1,5 +1,6 @@
 ﻿using GraphQL;
 using GraphQL.DataLoader;
+using GraphQL.Instrumentation;
 using GraphQL.Types;
 using SoccerClub.GraphQL.GraphQLOperation.Type.Team;
 using SoccerClub.GraphQL.Interface;
@@ -59,7 +60,7 @@ namespace SoccerClub.GraphQL.GraphQLOperation.Type.Member
                     var loader =
                         dataLoaderAccessor.Context.GetOrAddCollectionBatchLoader(
                             "GetAllMembers", func);
-
+                    
                     return loader.LoadAsync(context.Source.Id);
                 }
             );

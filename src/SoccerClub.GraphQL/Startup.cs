@@ -6,8 +6,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using SoccerClub.GraphQL.GraphQLOperation;
 using SoccerClub.GraphQL.Interface;
+using SoccerClub.GraphQL.Middleware;
 using SoccerClub.GraphQL.Repository.InMemory;
 using SoccerClub.GraphQL.Services;
 
@@ -15,12 +17,14 @@ namespace SoccerClub.GraphQL
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
+            Environment = environment;
         }
 
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment Environment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -35,12 +39,15 @@ namespace SoccerClub.GraphQL
 
             services.AddScoped<SoccerClubSchema>();
 
-            services.AddGraphQL(options =>
+            services.AddGraphQL((options, provider) =>
             {
-                options.EnableMetrics = false;
+                options.EnableMetrics = Environment.IsDevelopment();
+                var logger = provider.GetRequiredService<ILogger<Startup>>();
+                options.UnhandledExceptionDelegate = ctx => logger.LogError("{Error} occured", ctx.OriginalException.Message);
             })
                 .AddDataLoader()
                 .AddSystemTextJson()
+                .AddErrorInfoProvider(opt => opt.ExposeExceptionStackTrace = Environment.IsDevelopment())
                 .AddGraphTypes(ServiceLifetime.Scoped);
         }
 
@@ -58,7 +65,7 @@ namespace SoccerClub.GraphQL
 
             app.UseAuthorization();
 
-            app.UseGraphQL<SoccerClubSchema>();
+            app.UseGraphQL<SoccerClubSchema, GraphQLHttpMiddlewareWithLogs<SoccerClubSchema>>("/graphql");
             app.UseGraphQLPlayground(new GraphQLPlaygroundOptions());
 
             app.UseEndpoints(endpoints =>

@@ -3,6 +3,7 @@ using GraphQL.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace SoccerClub.GraphQL.GraphQLOperation
@@ -15,6 +16,7 @@ namespace SoccerClub.GraphQL.GraphQLOperation
             Mutation = serviceProvider.GetRequiredService<SoccerClubMutation>();
 
             Description = "The schema for the Soccer Club";
+
         }
     }
 }

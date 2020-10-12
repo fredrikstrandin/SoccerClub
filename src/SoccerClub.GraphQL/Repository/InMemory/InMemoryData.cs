@@ -73,6 +73,17 @@ namespace SoccerClub.GraphQL.Repository.InMemory
             },
             new MemberItem()
             {
+                Id = "4",
+                FirstName = "Viktor",
+                LastName = "Strandin",
+                Street = "Spireabågen 117",
+                ZIP = "159 56",
+                City = "Hässelby",
+                Born = DateTime.UtcNow.AddDays(-365* 9 + 19),
+                Email = "viktor.strandin@spam.com"
+            },
+            new MemberItem()
+            {
                 Id = "99",
                 FirstName = "Katarina", 
                 LastName = "Fransson",

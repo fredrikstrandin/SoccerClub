@@ -1,5 +1,7 @@
 ﻿using GraphQL;
+using GraphQL.Execution;
 using GraphQL.Types;
+using GraphQL.Validation.Rules;
 using SoccerClub.GraphQL.GraphQLOperation.Type.Member;
 using SoccerClub.GraphQL.Interface;
 
