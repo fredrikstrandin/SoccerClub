@@ -1,8 +1,8 @@
-﻿using SoccerClub.GraphQL.Model;
+﻿using SoccerClub.GraphQLServer.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace SoccerClub.GraphQL.Interface
+namespace SoccerClub.GraphQLServer.Interface
 {
     public interface ITeamService
     {

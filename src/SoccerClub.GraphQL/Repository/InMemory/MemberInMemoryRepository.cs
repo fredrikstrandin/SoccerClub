@@ -1,13 +1,12 @@
-﻿using SoccerClub.GraphQL.Interface;
-using SoccerClub.GraphQL.Model;
-using SoccerClub.GraphQL.Repository.InMemory;
-using System;
+﻿using SoccerClub.GraphQLServer.Interface;
+using SoccerClub.GraphQLServer.Model;
+using SoccerClub.GraphQLServer.Repository.InMemory;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SoccerClub.GraphQL.Repository
+namespace SoccerClub.GraphQLServer.Repository
 {
     public class MemberInMemoryRepository : IMemberRepository
     {
@@ -53,7 +52,7 @@ namespace SoccerClub.GraphQL.Repository
             {
                 var member = _data.MemberList.Where(x => x.Id == id).FirstOrDefault();
 
-                if(member != null)
+                if (member != null)
                 {
                     members.Add(member);
                 }
@@ -70,11 +69,11 @@ namespace SoccerClub.GraphQL.Repository
             {
                 TeamItem team = _data.Teams.Where(x => x.Id == teamId).FirstOrDefault();
 
-                if(team != null)
+                if (team != null)
                 {
                     foreach (var teamMember in team.Members)
                     {
-                        if(!(role.HasValue && teamMember.Role == role.Value))
+                        if (!(role.HasValue && teamMember.Role == role.Value))
                         {
                             continue;
                         }
@@ -97,7 +96,7 @@ namespace SoccerClub.GraphQL.Repository
                     }
                 }
             }
-            
+
             return Task.FromResult(teamMembers.ToLookup(x => x.TeamId));
         }
     }

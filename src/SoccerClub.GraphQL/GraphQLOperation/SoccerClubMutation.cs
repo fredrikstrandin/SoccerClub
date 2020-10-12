@@ -1,15 +1,11 @@
 ﻿using GraphQL;
 using GraphQL.Types;
-using SoccerClub.GraphQL.GraphQLOperation.Type.Member;
-using SoccerClub.GraphQL.GraphQLOperation.Type.Team;
-using SoccerClub.GraphQL.Interface;
-using SoccerClub.GraphQL.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using SoccerClub.GraphQLServer.GraphQLOperation.Type.Member;
+using SoccerClub.GraphQLServer.GraphQLOperation.Type.Team;
+using SoccerClub.GraphQLServer.Interface;
+using SoccerClub.GraphQLServer.Model;
 
-namespace SoccerClub.GraphQL.GraphQLOperation
+namespace SoccerClub.GraphQLServer.GraphQLOperation
 {
     public class SoccerClubMutation : ObjectGraphType
     {

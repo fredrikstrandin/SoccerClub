@@ -1,4 +1,4 @@
-﻿namespace SoccerClub.GraphQL.IntegrationTests.Models
+﻿namespace SoccerClub.GraphQLServer.IntegrationTests.Models
 {
     public class MemberVariable
     {

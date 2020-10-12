@@ -2,18 +2,16 @@
 using GraphQL.DataLoader;
 using GraphQL.Instrumentation;
 using GraphQL.Types;
-using SoccerClub.GraphQL.GraphQLOperation.Type.Team;
-using SoccerClub.GraphQL.Interface;
-using SoccerClub.GraphQL.Model;
+using SoccerClub.GraphQLServer.GraphQLOperation.Type.Team;
+using SoccerClub.GraphQLServer.Interface;
+using SoccerClub.GraphQLServer.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SoccerClub.GraphQL.GraphQLOperation.Type.Member
+namespace SoccerClub.GraphQLServer.GraphQLOperation.Type.Member
 {
     public class TeamGraphType : ObjectGraphType<TeamItem>
     {

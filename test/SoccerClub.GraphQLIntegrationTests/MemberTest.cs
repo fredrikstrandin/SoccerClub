@@ -1,21 +1,15 @@
-﻿using GraphQL.Client.Http;
-using Microsoft.AspNetCore.Mvc.Testing;
-using SoccerClub.GraphQL;
-using System;
-using System.Net.Http;
+﻿using GraphQL;
+using GraphQL.Client.Http;
 using GraphQL.Client.Serializer.SystemTextJson;
-using Xunit;
-using System.Threading.Tasks;
-using System.Text;
-using GraphQL.Client.Abstractions;
-using GraphQL;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
-using SoccerClub.GraphQL.IntegrationTests.Models;
+using Microsoft.AspNetCore.Mvc.Testing;
+using SoccerClub.GraphQLServer.IntegrationTests.Models;
+using System;
 using System.Diagnostics;
-using GraphQL.NewtonsoftJson;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Xunit;
 
-namespace SoccerClub.GraphQLs.IntegrationTests
+namespace SoccerClub.GraphQLServer.IntegrationTests
 {
     public class MemberTest : IClassFixture<WebApplicationFactory<Startup>>
     {
@@ -38,7 +32,7 @@ namespace SoccerClub.GraphQLs.IntegrationTests
         {
             var memberRequest = new GraphQLRequest
             {
-                Query = 
+                Query =
                 @"{ 
                     member(member_id: ""1"") {
                         first_name,
@@ -46,8 +40,8 @@ namespace SoccerClub.GraphQLs.IntegrationTests
                  }"
             };
 
-            var member = await _graphQLClient.SendQueryAsync<MemeberItem>(memberRequest);
-
+            GraphQLResponse<MemberDTO> member = await _graphQLClient.SendQueryAsync<MemberDTO>(memberRequest);
+            
             Assert.Equal("Maria", member.Data.member.first_name);
         }
 

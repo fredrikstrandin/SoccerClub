@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\SoccerClub.GraphQL\SoccerClub.GraphQL.csproj" />
+    <ProjectReference Include="..\..\src\SoccerClub.GraphQL\SoccerClub.GraphQLServer.csproj" />
   </ItemGroup>
 
 </Project>

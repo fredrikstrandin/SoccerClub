@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
-namespace SoccerClub.GraphQL.GraphQLOperation
+namespace SoccerClub.GraphQLServer.GraphQLOperation
 {
     public class SoccerClubSchema : Schema
     {

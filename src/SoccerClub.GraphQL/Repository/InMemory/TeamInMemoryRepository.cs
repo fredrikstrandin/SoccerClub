@@ -1,11 +1,10 @@
-﻿using SoccerClub.GraphQL.Interface;
-using SoccerClub.GraphQL.Model;
-using System;
+﻿using SoccerClub.GraphQLServer.Interface;
+using SoccerClub.GraphQLServer.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SoccerClub.GraphQL.Repository.InMemory
+namespace SoccerClub.GraphQLServer.Repository.InMemory
 {
     public class TeamInMemoryRepository : ITeamRepository
     {
@@ -42,7 +41,7 @@ namespace SoccerClub.GraphQL.Repository.InMemory
                 .Members.Where(y => y.Role == type)
                 .Select(q => q.MemberId)
                 .ToList();
-            
+
             return Task.FromResult(_data.MemberList.Where(x => playerIds.Contains(x.Id)).ToList());
         }
     }

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace SoccerClub.GraphQL.Model
+namespace SoccerClub.GraphQLServer.Model
 {
     public class TeamItem
     {
@@ -12,6 +9,6 @@ namespace SoccerClub.GraphQL.Model
         public int AgeGroup { get; set; }
         public List<TeamMemberItem> Members { get; set; }
         public List<ActivityItem> Activitys { get; set; }
-        
+
     }
 }

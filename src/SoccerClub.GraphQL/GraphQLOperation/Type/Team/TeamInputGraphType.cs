@@ -1,11 +1,7 @@
 ﻿using GraphQL.Types;
-using SoccerClub.GraphQL.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using SoccerClub.GraphQLServer.Model;
 
-namespace SoccerClub.GraphQL.GraphQLOperation.Type.Team
+namespace SoccerClub.GraphQLServer.GraphQLOperation.Type.Team
 {
     public class TeamInputGraphType : InputObjectGraphType<TeamInputItem>
     {
@@ -13,7 +9,7 @@ namespace SoccerClub.GraphQL.GraphQLOperation.Type.Team
         {
             Name = "teamInput";
 
-            Field< NonNullGraphType<StringGraphType>>("name");
+            Field<NonNullGraphType<StringGraphType>>("name");
             Field(x => x.AgeGroup, nullable: false).Name("age_group");
             Field<ListGraphType<TeamMemberInputGraphType>>("members");
         }

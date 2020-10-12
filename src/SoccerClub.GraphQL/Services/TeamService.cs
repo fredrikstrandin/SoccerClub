@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SoccerClub.GraphQL.Services
+namespace SoccerClub.GraphQLServer.Services
 {
     public class TeamService : ITeamService
     {
@@ -34,7 +34,7 @@ namespace SoccerClub.GraphQL.Services
             {
                 if (teamMember.Role == RoleEnum.Player)
                 {
-                    if(!lookupMember.Contains(teamMember.MemberId))
+                    if (!lookupMember.Contains(teamMember.MemberId))
                     {
                         throw new ExecutionError($"Player {teamMember.MemberId} do not exist");
                     }

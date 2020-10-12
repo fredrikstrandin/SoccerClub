@@ -1,15 +1,11 @@
 ﻿using GraphQL.Types;
-using SoccerClub.GraphQL.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using SoccerClub.GraphQLServer.Model;
 
-namespace SoccerClub.GraphQL.GraphQLOperation.Type.Member
+namespace SoccerClub.GraphQLServer.GraphQLOperation.Type.Member
 {
     public class MemberInputGraphType : InputObjectGraphType<MemberInputItem>
     {
-        public MemberInputGraphType() 
+        public MemberInputGraphType()
         {
             Name = "memberInput";
 
@@ -18,7 +14,7 @@ namespace SoccerClub.GraphQL.GraphQLOperation.Type.Member
 
             Field(x => x.Born, nullable: true).Name("born");
             Field(x => x.Email, nullable: true).Name("email");
-            
+
             Field(x => x.Street, nullable: true).Name("street");
             Field(x => x.ZIP, nullable: true).Name("zip");
             Field(x => x.City, nullable: true).Name("city");

@@ -1,29 +1,27 @@
-﻿using SoccerClub.GraphQL.Model;
+﻿using SoccerClub.GraphQLServer.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace SoccerClub.GraphQL.Repository.InMemory
+namespace SoccerClub.GraphQLServer.Repository.InMemory
 {
     public class InMemoryData
     {
         private int _nextNo = 2;
 
-        public string NextId { get { return (++_nextNo).ToString(); }  }
+        public string NextId { get { return (++_nextNo).ToString(); } }
 
         public List<TeamItem> Teams { get; set; } = new List<TeamItem>()
         {
-            new TeamItem() 
-            { 
-                Id = "1", 
+            new TeamItem()
+            {
+                Id = "1",
                 Name = "Boy 2003",
                 Members = new List<TeamMemberItem>()
                 {
                     new TeamMemberItem() { MemberId = "2", Role = RoleEnum.Player }
                 }
             },
-            new TeamItem() { Id = "2", 
+            new TeamItem() { Id = "2",
                 Name = "Girl 2009",
                 Members = new List<TeamMemberItem>()
                 {
@@ -85,7 +83,7 @@ namespace SoccerClub.GraphQL.Repository.InMemory
             new MemberItem()
             {
                 Id = "99",
-                FirstName = "Katarina", 
+                FirstName = "Katarina",
                 LastName = "Fransson",
                 Street = "Birkagata 146",
                 ZIP = "123 45",

@@ -1,4 +1,3 @@
-using GraphQL.DataLoader;
 using GraphQL.Server;
 using GraphQL.Server.Ui.Playground;
 using Microsoft.AspNetCore.Builder;
@@ -13,7 +12,7 @@ using SoccerClub.GraphQL.Middleware;
 using SoccerClub.GraphQL.Repository.InMemory;
 using SoccerClub.GraphQL.Services;
 
-namespace SoccerClub.GraphQL
+namespace SoccerClub.GraphQLServer
 {
     public class Startup
     {
@@ -37,7 +36,7 @@ namespace SoccerClub.GraphQL
 
             services.AddInMemoryRepository();
 
-            services.AddScoped<SoccerClubSchema>();
+            services.AddSingleton<SoccerClubSchema>();
 
             services.AddGraphQL((options, provider) =>
             {

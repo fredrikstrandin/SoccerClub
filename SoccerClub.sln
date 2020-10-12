@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoccerClub.GraphQL", "src\SoccerClub.GraphQL\SoccerClub.GraphQL.csproj", "{80902B41-2B8A-439B-82D9-7FFBA04AF4F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoccerClub.GraphQLServer", "src\SoccerClub.GraphQL\SoccerClub.GraphQLServer.csproj", "{80902B41-2B8A-439B-82D9-7FFBA04AF4F0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{57B39C8A-52CA-4508-AA63-8E45D3098394}"
 EndProject

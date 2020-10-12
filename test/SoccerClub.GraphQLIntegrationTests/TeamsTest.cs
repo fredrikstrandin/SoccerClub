@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc.TagHelpers;
-using Microsoft.AspNetCore.Mvc.Testing;
+﻿using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace SoccerClub.GraphQL.IntegrationTests
+namespace SoccerClub.GraphQLServer.IntegrationTests
 {
     public class TeamTests : IClassFixture<WebApplicationFactory<Startup>>
     {
@@ -17,7 +16,7 @@ namespace SoccerClub.GraphQL.IntegrationTests
         }
 
         [Fact]
-        public async Task HealthCheck_ReturnsOk()
+        public async Task get_teams()
         {
             HttpContent context = new StringContent("{\"query\": \"{teams{id, players {id, first_name, last_name, is_birthday}}}\"}",
                 Encoding.UTF8, "application/json");
